@@ -13,11 +13,11 @@ trainer_config:
   examples_path: "./datasets/rlhf_training_data.json"
   # number of episodes and generation performed for each episode
   # in the train() method
-  num_episodes: 100
-  max_timesteps: 32
+  num_episodes: 5
+  max_timesteps: 16
   # number of timesteps after which the learn() method is called 
   # (to update the weights)
-  update_timesteps: 32
+  update_timesteps: 16
   # number of example sampled at each timestep
   num_examples: 1
   # batch and epochs for the training
@@ -30,7 +30,7 @@ trainer_config:
   checkpoint_name: null
 
 actor_config:
-  model: "facebook/opt-1.3b"
+  model: "facebook/opt-125m"
   model_folder: "./models"
   tokenizer_path: "path-to-tokenizer"
   train_dataset_path: "./datasets/actor_training_data.json"
@@ -51,7 +51,7 @@ actor_config:
   additonal_prompt_tokens: 20
   # temperature for the actor
   temperature: 0.1
-  batch_size: 2
+  batch_size: 1
   # number iteration after print
   iteration_per_print: 1
   lr: 0.000009
@@ -83,7 +83,7 @@ reward_config:
   max_sequence_length: 2048
   train_dataset_path: "./datasets/reward_training_data.json"
   validation_dataset_path: null
-  batch_size: 8
+  batch_size: 2
   epochs: 1
   iteration_per_print: 1
   # steps after which the checkpoint are saved
